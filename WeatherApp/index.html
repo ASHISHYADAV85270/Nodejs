@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- api.openweathermap.org/data/2.5/weather?q=Pune&appid=917bab2c392da2a8ad2b7690c9675112 -->
+    <div class="card w-45 mx-auto" style="width: 18rem;">
+        <img class="card-img-top" src= {%imglink%} alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Weather: {%weatData%}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">City : {%cityname%} </li>
+            <li class="list-group-item" >Time <span  id="Tdata">ll</span></li>
+            <li class="list-group-item">Temp : {%tempval%} *C</li>
+        </ul>
+    </div>
+    <script>
+
+        // for setting time constraints 
+        const Tdata = document.getElementById("Tdata");
+        // console.log(Tdata);
+        let dateNtime = () => {
+            let timedata = new Date();
+            let hours = timedata.getHours();
+            let min = timedata.getMinutes();
+            // console.log(min);
+
+            if (hours >=13) {
+                hours = 24 - hours;
+                return `${hours}: ${min} PM`;
+            }
+            else {
+                return `${hours}: ${min} AM`;
+            }
+        }
+        // console.log(dateNtime());
+        let a=dateNtime();
+        // console.log(a);
+        // console.log(dataNtime());
+        Tdata.innerText=`${a}`;
+
+        // console.log(`Time:  ${dataNtime()}`);
+        // Tdata.innerText=`Time:  ${dataNtime}`;
+
+    </script>
+</body>
+
+</html>
